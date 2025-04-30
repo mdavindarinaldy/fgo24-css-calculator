@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Calculator</title>
+    <style>
+        html {
+            font-size: 30px;
+            background-color: #b8af9e;
+        }
+        .container {
+            display: grid;
+            width: 400px;
+            border: 2px solid black;
+            background-color: #FEF3E2;
+            gap: 10px;
+            padding: 10px;
+            text-align: center;
+            grid-template-areas:
+            "em em em em"
+            "a a a a"
+            "b b b b"
+            "c d e e"
+            "del f g h"
+            "z x y i"
+            "p r q j"
+            "s t u k"
+            "l v m n";
+        }
+        .container2 {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+        div>div>div {
+            /* border: 1px solid black; */
+            color: #534;
+            text-align: right;
+        }
+        .header {
+            margin:0;
+            padding: 0;
+            text-align: left;
+            border: 0;
+            font-size: 15px;
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+        }
+        button.switch {
+            width: 50px;
+            height: 20px;
+            border: 1px none;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        p {
+            margin: 0;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container2">
+        <div></div>
+        <div class="container">
+            <div style="grid-area: em;" class="header">
+                <button class="switch"><img src="./assets/lightmode.png" alt="lightmode" width="40px" height="19px"></button><p>switch to dark</p>
+            </div>
+            <div style="grid-area: a;">45 x 24</div>
+            <div style="grid-area: b;">1080</div>
+            <button style="grid-area: c;">Ti</button>
+            <button style="grid-area: d;">Z</button>
+            <button style="grid-area: e;">Del</button>
+            <button style="grid-area: del;">C</button>
+            <button style="grid-area: f;">()</button>
+            <button style="grid-area: g;">%</button>
+            <button style="grid-area: h;">/</button>
+            <button style="grid-area: z;">7</button>
+            <button style="grid-area: x;">8</button>
+            <button style="grid-area: y;">9</button>
+            <button style="grid-area: i;">x</button>
+            <button style="grid-area: p;">4</button>
+            <button style="grid-area: r;">5</button>
+            <button style="grid-area: q;">6</button>
+            <button style="grid-area: j;">-</button>
+            <button style="grid-area: s;">1</button>
+            <button style="grid-area: t;">2</button>
+            <button style="grid-area: u;">3</button>
+            <button style="grid-area: k;">+</button>
+            <button style="grid-area: l;">+/-</button>
+            <button style="grid-area: v;">0</button>
+            <button style="grid-area: m;">.</button>
+            <button style="grid-area: n;">=</button>
+        </div>
+        <div></div>
+    </div>
+</body>
+</html>
