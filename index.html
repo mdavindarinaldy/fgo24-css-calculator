@@ -5,40 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Calculator</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+
         html {
             font-size: 30px;
+            font-family: "Nova Mono", monospace;
             background-color: #b8af9e;
         }
         .container {
             display: grid;
-            width: 400px;
+            max-width: 250px;
+            max-height: 480px;
             border: 2px solid black;
             background-color: #FEF3E2;
             gap: 10px;
-            padding: 10px;
+            /* padding: 10px; */
             text-align: center;
             grid-template-areas:
             "em em em em"
             "a a a a"
             "b b b b"
-            "c d e e"
-            "del f g h"
-            "z x y i"
-            "p r q j"
-            "s t u k"
-            "l v m n";
         }
         .container2 {
             display: grid;
             grid-template-columns: repeat(3,1fr);
         }
         div>div>div {
-            /* border: 1px solid black; */
             color: #534;
             text-align: right;
         }
         .header {
-            margin:0;
+            grid-area: em;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 0px 0px 0px;
             padding: 0;
             text-align: left;
             border: 0;
@@ -46,17 +46,67 @@
             display: grid;
             grid-template-columns: repeat(6,1fr);
         }
+        .output {
+            grid-area: a;
+            display: grid;
+        }
+        .input {
+            grid-area: b;
+            background-color: #fde1b7;
+            border-top: 2px solid black;
+            display: grid;
+            padding: 0px 8px 8px 8px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            gap:10px;
+            grid-template-areas:
+            "item1 item2 item3 item3 item3 item3 item3 item3 item3"
+            "item4 item4 item4 item4 item4 item4 item4 item4 item4"
+            ;
+        }
+        .input>div{
+            grid-area: item4;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:5px;
+            
+        }
         button.switch {
-            width: 50px;
-            height: 20px;
+            width: fit-content;
+            height: fit-content;
+            margin-left: 5px;
             border: 1px none;
             border-radius: 10px;
             background-color: white;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         }
-
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px none;
+            background-color: rgb(243, 75, 13);
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        .input>button {
+            width: 25px;
+            height: 30px;
+            margin-top: 10px;
+            box-shadow: none;
+            background-color: #fde1b7;
+        }
+        span {
+            margin-right: 10px;
+        }
         p {
-            margin: 0;
+            margin: 0px 0px 0px 5px;
             width: 100px;
+            font-size: 10px;
+        }
+        button.a {
+            background-color: rgb(250, 145, 106);
+        }
+        button.b {
+            background-color: rgb(232, 114, 72);
         }
     </style>
 </head>
@@ -64,34 +114,47 @@
     <div class="container2">
         <div></div>
         <div class="container">
-            <div style="grid-area: em;" class="header">
-                <button class="switch"><img src="./assets/lightmode.png" alt="lightmode" width="40px" height="19px"></button><p>switch to dark</p>
+            <div class="header">
+                <button class="switch"><img src="./assets/lightmode.png" alt="lightmode" width="40px" height="19px"></button>
+                <p>switch to dark</p>
             </div>
-            <div style="grid-area: a;">45 x 24</div>
-            <div style="grid-area: b;">1080</div>
-            <button style="grid-area: c;">Ti</button>
-            <button style="grid-area: d;">Z</button>
-            <button style="grid-area: e;">Del</button>
-            <button style="grid-area: del;">C</button>
-            <button style="grid-area: f;">()</button>
-            <button style="grid-area: g;">%</button>
-            <button style="grid-area: h;">/</button>
-            <button style="grid-area: z;">7</button>
-            <button style="grid-area: x;">8</button>
-            <button style="grid-area: y;">9</button>
-            <button style="grid-area: i;">x</button>
-            <button style="grid-area: p;">4</button>
-            <button style="grid-area: r;">5</button>
-            <button style="grid-area: q;">6</button>
-            <button style="grid-area: j;">-</button>
-            <button style="grid-area: s;">1</button>
-            <button style="grid-area: t;">2</button>
-            <button style="grid-area: u;">3</button>
-            <button style="grid-area: k;">+</button>
-            <button style="grid-area: l;">+/-</button>
-            <button style="grid-area: v;">0</button>
-            <button style="grid-area: m;">.</button>
-            <button style="grid-area: n;">=</button>
+            <div class="output">
+                <span style="font-size: 18px;">45 x 24</span>
+                <span style="font-size: 36px;">1080</span>
+            </div>
+            <div class="input">
+                <button style="grid-area:item1;justify-self:center;">
+                    <img src="./assets/history.png" width="18px" height="18px" alt="Zoom Out">
+                </button>
+                <button style="grid-area:item2;justify-self: center;">
+                    <img src="./assets/zoom.png" width="15px" height="15px" alt="Zoom Out">
+                </button>
+                <button style="grid-area:item3;justify-self:right;">
+                    <img src="./assets/backspace.png" width="20px" height="20px" alt="Del">
+                </button>
+                <div>
+                    <button class="a">C</button>
+                    <button class="a">()</button>
+                    <button class="a">%</button>
+                    <button>/</button>
+                    <button class="b">7</button>
+                    <button class="b">8</button>
+                    <button class="b">9</button>
+                    <button>x</button>
+                    <button class="b">4</button>
+                    <button class="b">5</button>
+                    <button class="b">6</button>
+                    <button>-</button>
+                    <button class="b">1</button>
+                    <button class="b">2</button>
+                    <button class="b">3</button>
+                    <button>+</button>
+                    <button class="b">+/-</button>
+                    <button class="b">0</button>
+                    <button class="b">.</button>
+                    <button>=</button>
+                </div>
+            </div>
         </div>
         <div></div>
     </div>
